@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewBag.Title = "FaturaDetay";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    int id = 0;
+}
+
+@using MvcOnlineTicariOtomasyon.Models.Sınıflar;
+@model List<FaturaKalem>
+@using System.Globalization
+
+<br />
+<h2>Fatura Detay</h2>
+<br />
+
+
+<table class="table table-bordered">
+    <tr>   
+        <th>AÇIKLAMA</th>
+        <th>MİKTAR</th>
+        <th>BİRİM FİYAT</th>
+        <th>TUTAR</th>
+    </tr>
+
+      @foreach (var item in Model)
+      {
+        <tr>
+            @{ id = item.FaturaId;} 
+            <td>@item.Aciklama</td>
+            <td>@item.Miktar</td>
+            <td>@item.BirimFiyat.ToString("N2", new CultureInfo("tr-TR"))₺</td>
+            <td>@item.Tutar</td>
+        </tr>
+      }
+</table>
+<br />
+<a href="/Fatura/FaturaKalemEkle/@id" class="btn btn-info">Yeni Kalem Ekle</a>
+

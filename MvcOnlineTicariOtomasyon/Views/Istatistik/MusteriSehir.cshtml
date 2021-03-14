@@ -1,0 +1,57 @@
+﻿
+@using MvcOnlineTicariOtomasyon.Models.Sınıflar
+@model List<SehirGrup>
+
+<!-- /.card-header -->
+
+
+@{ int count = 0;}
+
+@foreach (var item in Model)
+{
+    <tr>
+        <td>@{count++;}@count</td>
+        <td>@item.sehir</td>
+        <td>
+            @if (item.sayi == 1)
+            {
+                <div class="progress progress-xs">
+                    <div class="progress-bar progress-bar-danger" style="width: 55%"></div>
+                </div>
+            }
+            @if (item.sayi == 2)
+            {
+                <div class="progress progress-xs">
+                    <div class="progress-bar bg-warning" style="width: 70%"></div>
+                </div>
+            }
+            @if (item.sayi > 2)
+            {
+                <div class="progress progress-xs progress-striped active">
+                    <div class="progress-bar bg-success" style="width: 90%"></div>
+                </div>
+            }
+
+        </td>
+        <td>
+            @if (@item.sayi == 1)
+            {
+                <span class="badge bg-danger">@item.sayi</span>
+            }
+            @if (@item.sayi == 2)
+            {
+                <span class="badge bg-warning">@item.sayi</span>
+            }
+            @if (@item.sayi > 2)
+            {
+                <span class="badge bg-success">@item.sayi</span>
+            }
+        </td>
+    </tr>
+
+}
+
+
+
+
+<!-- /.card-body -->

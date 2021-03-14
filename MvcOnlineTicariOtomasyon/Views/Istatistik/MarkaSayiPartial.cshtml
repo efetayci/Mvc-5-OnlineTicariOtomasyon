@@ -1,0 +1,47 @@
+﻿@model IEnumerable<MvcOnlineTicariOtomasyon.Models.Sınıflar.MarkaSayisi>
+
+@{ int count = 0;}
+@foreach (var item in Model)
+{
+<tr>
+    <td>@{count++;}@count</td>
+    <td>@item.MarkaAd</td>
+    <td>
+        @if (item.Sayi == 1)
+        {
+            <div class="progress progress-xs">
+                <div class="progress-bar progress-bar-danger" style="width: 55%"></div>
+            </div>
+        }
+        @if (item.Sayi == 2)
+        {
+            <div class="progress progress-xs">
+                <div class="progress-bar bg-warning" style="width: 70%"></div>
+            </div>
+        }
+        @if (item.Sayi > 2)
+        {
+            <div class="progress progress-xs progress-striped active">
+                <div class="progress-bar bg-success" style="width: 90%"></div>
+            </div>
+        }
+
+    </td>
+    <td>
+        @if (@item.Sayi == 1)
+        {
+            <span class="badge bg-danger">@item.Sayi</span>
+        }
+        @if (@item.Sayi == 2)
+        {
+            <span class="badge bg-warning">@item.Sayi</span>
+        }
+        @if (@item.Sayi > 2)
+        {
+            <span class="badge bg-success">@item.Sayi</span>
+        }
+    </td>
+</tr>
+}
+    
+

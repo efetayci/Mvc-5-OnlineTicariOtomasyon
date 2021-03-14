@@ -1,0 +1,45 @@
+﻿
+@{
+    ViewBag.Title = "DepartmanPersonelSatıs";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+
+}
+@using System.Globalization
+@using MvcOnlineTicariOtomasyon.Models.Sınıflar
+@model List<SatisHareket>
+
+<br />
+<div style="color:brown;"><p><h2><ins>Departman Personel Satış</ins></h2></p></div>
+<br />
+
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active"><b>Personel Adı Soyadı : @ViewBag.personel</b></li>
+</ol>
+
+<table class="table table-bordered">
+    <tr class="table table-info">
+
+        <th>CARİ AD-SOYAD</th>
+        <th>URUN AD</th>
+        <th>ADET</th>
+        <th>FİYAT</th>
+        <th>TOPLAM TUTAR</th>
+        <th>TARİH</th>
+        <th>YAZDIR</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+
+            <td>@item.Cari.CariAd @item.Cari.CariSoyad</td>
+            <td>@item.Urun.UrunAD</td>
+            <td>@item.Adet</td>
+            <td>@item.fiyat.ToString("N2", new CultureInfo("tr-TR"))₺</td>
+            <td>@item.ToplamTutar</td>
+            <td>@item.Tarih</td>
+
+            <td><a href="#" class="btn btn-default" style="background-color:cornflowerblue">Yazdır</a></td>
+        </tr>
+    }
+</table>

@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewBag.Title = "Index4";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<!DOCTYPE html>
+<br />
+<h2 style="background-color:coral">Ürün - Stok Grafiği</h2>
+<html lang="en">
+
+<head>
+
+    <title>Result Visualization</title>
+
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
+
+    
+
+
+</head>
+
+<body>
+
+    @Html.Action("PieChart","Grafik")
+    <br />
+    
+
+    
+
+
+</body>
+
+</html>
+

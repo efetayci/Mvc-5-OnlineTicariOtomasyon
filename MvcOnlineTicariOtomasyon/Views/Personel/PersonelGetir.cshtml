@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewBag.Title = "PersonelGetir";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+@model MvcOnlineTicariOtomasyon.Models.Sınıflar.Personel
+
+<br />
+<h2>Personel Guncelleme</h2>
+<br />
+
+@using (Html.BeginForm("PersonelGuncelle", "Personel", FormMethod.Post,new { enctype = "multipart/form-data" }))
+{
+    <div class="form-group">
+        @Html.HiddenFor(x => x.PersonelId)
+        @Html.LabelFor(x => x.PersonelAd)
+        @Html.TextBoxFor(x => x.PersonelAd, new { @class = "form-control" })
+        <br />
+        @Html.LabelFor(x => x.PersonelSoyad)
+        @Html.TextBoxFor(x => x.PersonelSoyad, new { @class = "form-control" })
+        <br />
+        @Html.LabelFor(x => x.PersonelResim)<br />
+        @*@Html.TextBoxFor(x => x.PersonelResim, new { @class = "form-control" })*@
+        <input type="file" name="PersonelResim" Dosya Seç/>
+        <br /><br/>
+        @Html.LabelFor(x => x.departman)
+        @Html.DropDownListFor(x=>x.DepartmanId,(List<SelectListItem>)ViewBag.list, new { @class = "form-control" })
+        <br />
+        <button class="btn btn-warning">Güncelle</button>
+    </div>
+ }

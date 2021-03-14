@@ -1,0 +1,48 @@
+﻿
+
+
+@model List<MvcOnlineTicariOtomasyon.Models.Sınıflar.Mesajlar>
+
+<div class="timeline timeline-inverse">
+
+    <!-- timeline time label -->
+
+    @foreach (var item in Model)
+    {
+
+
+
+        <div class="time-label">
+
+            <span class="bg-gradient-cyan">
+
+                @item.Tarih.ToString("dd-MM-yyyy")
+
+            </span>
+
+        </div>
+
+        
+        <div>
+
+            <i class="fas fa-envelope bg-primary"></i>
+
+            <div class="timeline-item">
+
+                <span class="time"><i class="far fa-clock"></i>@item.Tarih.ToString("HH:mm")</span>
+
+                <h3 class="timeline-header border-0">
+
+                    <a href="#">@item.Konu</a> @item.icerik
+
+                </h3>
+
+            </div>
+
+        </div>
+
+        
+    }
+
+
+</div>

@@ -1,0 +1,35 @@
+﻿
+
+
+@model MvcOnlineTicariOtomasyon.Models.Sınıflar.Cari
+
+@using (Html.BeginForm("BilgiGuncelle", "CariPanel"))
+{
+    <table class="table table-bordered">
+
+        <tr>
+            <td>@Html.DisplayNameFor(x => x.Carimail)</td>
+            <td><label>@HttpContext.Current.User.Identity.Name</label></td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(x => x.CariAd)</td>
+            <td>@Html.TextBoxFor(x => x.CariAd, new { @class = "form-control" })</td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(x => x.CariSoyad)</td>
+            <td>@Html.TextBoxFor(x => x.CariSoyad, new { @class = "form-control" })</td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(x => x.CariSehir)</td>
+            <td>@Html.TextBoxFor(x => x.CariSehir, new { @class = "form-control" })</td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(x => x.CariSifre)</td>
+            <td>@Html.TextBoxFor(x => x.CariSifre, new { @class = "form-control" })</td>
+        </tr>
+        @Html.HiddenFor(x=>x.CariId)
+        @Html.HiddenFor(x=>x.Carimail)
+
+    </table>
+    <button class="btn btn-warning" style="margin-left:5;">Bilgilerimi Güncelle</button>
+}

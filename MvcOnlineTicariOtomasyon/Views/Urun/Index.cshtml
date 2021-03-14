@@ -1,0 +1,66 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@using System.Globalization
+@using MvcOnlineTicariOtomasyon.Models.Sınıflar
+@using PagedList
+@using PagedList.Mvc
+@model  PagedList.IPagedList<Urun>
+
+<br />
+<div style="color:brown;"><p><h2><ins>Ürünler</ins></h2></p></div>
+<br />
+@using (Html.BeginForm("Index", "Urun", FormMethod.Get))
+{
+    <p>
+        Ürün Adı: @Html.TextBox("aranan")
+        <input type="submit" value="Ara" />
+    </p>
+}
+
+
+<table class="table table-bordered" style=" margin-top:20px;">
+    <tr class="table table-primary">
+        <th>ÜRÜN AD</th>
+        <th>ÜRÜN MARKA</th>
+        <th>URUN STOK</th>
+        <th>ÜRÜN ALIŞ FİYAT</th>
+        <th>ÜRÜN SATIŞ FİYAT</th>
+        <th>ÜRÜN KATEGORİ</th>
+        <th>ÜRÜN GÖRSEL</th>
+        <th>SATIŞ YAP</th>
+        <th>ÜRÜN SİL</th>
+        <th>ÜRÜN GÜNCELLE</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        if (item.Durum)
+        {
+            <tr>
+                <td>@item.UrunAD</td>
+                <td>@item.UrunMarka</td>
+                <td>@item.UrunStok</td>
+                <td>@item.AlisFiyat.ToString("N2", new CultureInfo("tr-TR"))₺</td>
+                <td>@item.SatisFiyat.ToString("N2", new CultureInfo("tr-TR"))₺</td>
+                <td>@item.Kategori.KategoriAd</td>
+                <td><img src="@item.UrunGorsel" style="width:110px;height:100px;" /></td>
+                <td><a href="/Urun/SatisYap/@item.UrunId" class="btn btn-secondary">Satış</a></td>
+                <td><a href="/Urun/UrunSil/@item.UrunId" class="btn btn-danger">Sil</a></td>
+                <td><a href="/Urun/UrunGetir/@item.UrunId" class="btn btn-success">Güncelle</a></td>
+
+            </tr>
+        }
+    }
+
+
+</table>
+@Html.PagedListPager((IPagedList)Model, sayfa => Url.Action("Index", new { sayfa }), new PagedListRenderOptions
+{
+    LiElementClasses = new List<string>
+    { "page-link"}
+})
+<a href="/Urun/UrunEkle" class="btn btn-primary">Urun Ekle</a>
+

@@ -1,0 +1,32 @@
+﻿
+@{
+    ViewBag.Title = "KargoDetay";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@using MvcOnlineTicariOtomasyon.Models.Sınıflar
+@model  List<KargoTakip>
+<br />
+<h2>Kargo Detayları</h2>
+<br />
+
+@using (Html.BeginForm("Index", "Kargo", FormMethod.Post))
+{
+    <table class="table table-bordered">
+        <tr style="background-color:lightblue">
+            <th>Açıklama</th>
+            <th>Tarih</th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Acıklama</td>
+                <td>@item.Tarih</td>
+            </tr>
+        }
+
+    </table>
+    <br />
+    <button class="btn btn-warning" style="background-color:brown;color:aliceblue" >Tamam</button>
+}

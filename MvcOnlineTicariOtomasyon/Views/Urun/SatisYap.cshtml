@@ -1,0 +1,59 @@
+﻿
+@{
+    ViewBag.Title = "SatisYap";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@model MvcOnlineTicariOtomasyon.Models.Sınıflar.SatisHareket
+
+<br />
+<h2>Satis Yapma Sayfasi</h2>
+<br />
+
+<form class="form-group" method="post">
+
+    <div>
+        
+        @Html.Label("Ürün Id")
+        <input type="text" name="UrunId" value="@ViewBag.id" readonly class="form-control" />
+    </div>
+    <br />
+    <div>
+        @Html.Label("Cari")
+        @Html.DropDownListFor(x => x.CariId, (List<SelectListItem>)ViewBag.cari, new { @class = "form-control" })
+    </div>
+    <br />
+    <div>
+        @Html.Label("Personel")
+        @Html.DropDownListFor(x => x.PersonelId, (List<SelectListItem>)ViewBag.personel, new { @class = "form-control" })
+    </div>
+    <br />
+    <div>
+        @Html.Label("Fiyat")
+        <input type="text" name="fiyat" value="@ViewBag.fiyat"  class="form-control" id="fiyat" onkeyup="hesapla();" />
+    </div>
+    <br />
+    <div>
+        @Html.LabelFor(x => x.Adet)
+        <input type="number" name="Adet"  class="form-control" max="10" min="0" placeholder="Adet girin " id="adet" onchange="hesapla();" />
+    </div>
+    <br />
+    <div>
+        @Html.LabelFor(x => x.ToplamTutar)
+        <input type="text" name="ToplamTutar" id="tutar" readonly class="form-control" />
+    </div>
+    <br />
+    <button class="btn btn-info">Satış Yap</button>
+
+</form>
+
+<script>
+    function hesapla() {
+        var fiyat = document.getElementById('fiyat').value
+        var adet = document.getElementById('adet').value;
+        var toplam = (adet) * parseInt(fiyat);
+        if (!isNaN(toplam)) {
+        document.getElementById('tutar').value = toplam;
+        }
+    }
+</script>

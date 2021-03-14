@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewBag.Title = "YeniToDo";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@model MvcOnlineTicariOtomasyon.Models.toDo
+
+<br />
+<h2>Yeni ToDo</h2>
+<br />
+
+<form class="form-group" method="post">
+    <div>
+        @Html.LabelFor(x => x.Baslik)
+        @Html.TextBoxFor(x => x.Baslik, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x=>x.Baslik,"",new { @style="color:red"})
+    </div>
+    <br />
+    <div>
+        @Html.LabelFor(x => x.Aciklama)
+        @Html.TextBoxFor(x => x.Aciklama, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.Aciklama, "", new { @style = "color:red" })
+    </div>
+    <br />
+    <button class="btn btn-info">Kaydet</button>
+</form>

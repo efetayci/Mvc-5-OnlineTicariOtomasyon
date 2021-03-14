@@ -1,0 +1,21 @@
+﻿
+@using MvcOnlineTicariOtomasyon.Models.Sınıflar
+@model IEnumerable<Kategori>
+
+
+
+@{ int yuzde = 100 / ViewBag.sayi; int count = 0;   }
+
+@foreach (var item in Model)
+{
+    <tr>
+        <td>@{count++;}@count</td>
+        <td>@item.KategoriAd</td>
+        <td>
+            <div class="progress progress-xs">
+                <div class="progress-bar progress-bar-danger" style="width: @yuzde%"></div>
+            </div>
+        </td>
+        <td><span class="badge bg-primary">@yuzde%</span></td>
+    </tr>
+}

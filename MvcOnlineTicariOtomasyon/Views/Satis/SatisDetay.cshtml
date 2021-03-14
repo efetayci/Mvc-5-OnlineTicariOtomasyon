@@ -1,0 +1,45 @@
+﻿
+
+
+@{
+    ViewBag.Title = "SatisDetay";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@model  MvcOnlineTicariOtomasyon.Models.Sınıflar.SatisHareket
+
+
+<br />
+<h2>Satış Detay</h2>
+<br />
+
+
+
+<table class="table table-bordered">
+    
+    <tr class="table table-info">
+        <th>SATIŞ İD</th>
+        <th>ÜRÜN</th>
+        <th>CARİ</th>
+        <th>PERSONEL</th>
+        <th>FİYAT</th>
+        <th>ADET</th>
+        <th>TOPLAM TUTAR</th>
+        <th>TARİH</th>
+
+    </tr>
+    <tr>
+        <td>@Model.SatisId</td>
+        <td>@Model.Urun.UrunAD</td>
+        <td>@Model.Cari.CariAd</td>
+        <td>@Model.Personel.PersonelAd</td>
+        <td>@Model.fiyat</td>
+        <td>@Model.Adet</td>
+        <td>@Model.ToplamTutar.ToString("N2", ViewBag.deger)</td>
+        <td>@Model.Tarih.ToString("dd/MM/yyyy")</td>
+    </tr>
+
+</table>
+
+<button class="btn btn-info">Yazdır</button>
+

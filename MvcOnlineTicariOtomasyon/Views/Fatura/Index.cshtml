@@ -1,0 +1,79 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@using MvcOnlineTicariOtomasyon.Models.Sınıflar
+@using System.Globalization
+@model List<Fatura>
+
+<br />
+<div style="color:brown;"><p><h2><ins>Faturalar</ins></h2></p></div>
+<br />
+<table class="table table-bordered" style=" margin-top:20px;">
+    <tr class="table table-info">
+        <th>SERİ SIRA NO</th>
+        <th>TARİH</th>
+        <th>SAAT</th>
+        <th>TOPLAM</th>
+        <th>GÜNCELLE</th>
+        <th>DETAYLAR</th>
+        <th>POPUP LİSTE</th>
+        <th>YENİ KALEM</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+
+        <tr>
+            <td>@item.FaturaSeriNo @item.FaturaSıraNo</td>
+            <td>@item.FaturaTarih.ToString("dd/MM/yyyy")</td>
+            <td>@item.Saat</td>
+            <td>@item.ToplamTutar.ToString("N2", new CultureInfo("tr-TR"))₺</td>
+
+            <td><a href="/Fatura/FaturaGetir/@item.FaturaId" class="btn btn-warning">Güncelle</a></td>
+            <td><a href="/Fatura/FaturaDetay/@item.FaturaId" class="btn btn-default" style="background-color:darkkhaki">Detaylar</a></td>
+            <td><a href="/Fatura/FaturaGetir/@item.FaturaId" class="btn btn-secondary">Popup </a></td>
+            <td><a href="/Fatura/FaturaKalemEkle/@item.FaturaId" class="btn btn-success">Kalem</a></td>
+        </tr>
+
+    }
+
+
+</table>
+<a href="/Fatura/FaturaEkle/@ViewBag.id" class="btn btn-info">Yeni Fatura Girişi</a>
+<br />
+<br />
+<button class="btn btn-secondary" data-toggle="modal" data-target="#Modal1">Popup Penceresi</button>
+<div class="modal" id="Modal1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Deneme Pop-up</h2>
+            </div>
+            <div class="modal-body">
+                <table class="table table-bordered">
+                    <tr>
+                        <td>Seri Sıra No</td>
+                        <td>Tarih</td>
+                        <td>Saat</td>
+                        <td>Tutar</td>
+                    </tr>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.FaturaSeriNo @item.FaturaSıraNo</td>
+                            <td>@item.FaturaTarih.ToString("dd/MM/yyyy")</td>
+                            <td>@item.Saat</td>
+                            <td>@item.ToplamTutar.ToString("N2", new CultureInfo("tr-TR"))₺</td>
+                        </tr>
+                    }
+                </table>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Tamam</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

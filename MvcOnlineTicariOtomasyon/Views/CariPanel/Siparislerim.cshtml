@@ -1,0 +1,51 @@
+﻿
+@{
+    ViewBag.Title = "Siparislerim";
+    Layout = "~/Views/Shared/_cariLayout.cshtml";
+    int count = 0;
+}
+@model List<MvcOnlineTicariOtomasyon.Models.Sınıflar.SatisHareket>
+
+<br />
+<h2>Siparişlerim</h2>
+<br />
+
+<table class="table table-bordered" style=" margin-top:20px;">
+
+
+
+
+    @foreach (var item in Model)
+    {
+        if (count == 0)
+        {
+            <tr>
+                <th>ÜRÜN ID</th>
+                <th>ÜRÜN AD</th>
+                <th>ÜRÜN MARKA</th>
+                <th>FİYAT</th>
+                <th>ÜRÜN KATEGORİ</th>
+                <th>ÜRÜN GÖRSEL</th>
+                <th>TARİH </th>
+
+            </tr>
+            { count++; }
+        }
+        <tr>
+            <td>@item.UrunId</td>
+            <td>@item.Urun.UrunAD</td>
+            <td>@item.Urun.UrunMarka</td>
+            <td>@item.Urun.SatisFiyat</td>
+            <td>@item.Urun.Kategori.KategoriAd</td>
+            <td><img src="@item.Urun.UrunGorsel" style="width:80px; height:50px;" /></td>
+            <td>@item.Tarih.ToString("dd/MM/yyyy")</td>
+        </tr>
+
+    }
+
+</table>
+
+@if (count == 0)
+{
+    <div style="background-color:azure;color:red">-->Listelenen siparişiniz yoktur.</div>
+}
